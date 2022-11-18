@@ -1,28 +1,35 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:test/cell.dart';
+import 'package:test/Components/cell.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+import '../Models/game.dart';
+class home_screen extends StatelessWidget {
+  //var
+  List<Game> games =  [
+    Game("dmc5.jpg","Devil May Cry ",200),
+    Game("fifa.jpg","Devil May Cry ",200),
+    Game("minecraft.jpg","Devil May Cry ",200),
+    Game("nfs.jpg","Devil May Cry",200),
+    Game("rdr2.jpg","Devil May Cry ",200),
+    Game("re8.jpg","Devil May Cry ",200),
+  ];
 
+  home_screen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('G-Store esprit', style: TextStyle(fontWeight: FontWeight.bold)),
+      appBar: AppBar(title: const Text(
+          "G-Store Esprit",style: TextStyle(
+        fontWeight: FontWeight.bold,
+      ))),
+      body:
+      ListView.builder(
+        itemCount: games.length,
+        itemBuilder: (BuildContext context, int index) {
+          return cell(game:games[index]);
+        },
+
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: const [
-            Cell(title: "fifa22",price: 100,image: "assets/fifa.jpg",),
-            Cell(title: "devil may cry",price: 100,image: "assets/dmc5.jpg",),
-            Cell(title: "minecraft",price: 100,image: "assets/minecraft.jpg",),
-            Cell(title: "need for speed",price: 100,image: "assets/nfs.jpg",),
-            Cell(title: "red dead redemptionsqdqs",price: 100,image: "assets/rdr2.jpg",),
-            Cell(title: "resident evil",price: 100,image: "assets/re8.jpg",)
-          ],
-        ),
-      ),
+
     );
   }
 }

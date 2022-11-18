@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: //const DetailsScreen(),
-      const InscriptionScreen()
+        home_screen()
     );
   }
 }
